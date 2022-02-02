@@ -1,15 +1,16 @@
-﻿@model List<Todo>
+﻿@model todo.ViewModels.TodoViewModel
 
 <table>
     <tr>
         <th>Id</th>
         <th>Name</th>
     </tr>
-    @foreach (var t in Model)
+    @foreach (var t in Model.TodoList)
     {
         <tr>
             <td>@t.Id</td>
             <td>@t.Name</td>
+            <td><input type="submit" class="btn btn-danger" value="Delete" onClick="deleteTodo(@t.Id)" /></td>
         </tr>
     }
 </table>
