@@ -1,1 +1,15 @@
-﻿<h1>I'm TODO</h1>
+﻿@model List<Todo>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    @foreach (var t in Model)
+    {
+        <tr>
+            <td>@t.Id</td>
+            <td>@t.Name</td>
+        </tr>
+    }
+</table>

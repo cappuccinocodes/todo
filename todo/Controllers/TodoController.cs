@@ -8,7 +8,8 @@ namespace todo.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            List < Todo > todoList = new ();
+            return View(todoList);
         }
 
         public void Insert(Todo todo)
