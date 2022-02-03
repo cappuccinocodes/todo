@@ -3,18 +3,16 @@
 <form asp-action="Insert" id="form-action" method="post" class="form-horizontal" role="form">
     <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div class="form-group">
-        <label asp-for="Todo.Name" class="col-md-2 control-label"></label>
-
-        <div class="col-md-5">
-            <input asp-for="Todo.Id" type="hidden"  class="form-control" />
-            <input asp-for="Todo.Name" class="form-control"/>
+    <div class="row">
+        <div class="col-4">
+            <label asp-for="Todo.Name" class="form-label"></label>
+            <input asp-for="Todo.Id" type="hidden" class="form-control" />
+            <input asp-for="Todo.Name" class="form-control" />
             <span asp-validation-for="Todo.Name" class="text-danger"></span>
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-5">
+    <div class="row">
+        <div class="col-lg-2 mt-3 mb-5">
             <input type="submit" id="form-button" class="btn btn-success" value="Add Todo" />
         </div>
     </div>

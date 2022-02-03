@@ -6,11 +6,10 @@
     <title>@ViewData["Title"] - todo</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/todo.styles.css" asp-append-version="true" />
 </head>
 <body>
 
-<div class="container">
+<div class="container justify-content-center">
     @Html.Partial("_Form")
     <main role="main" class="pb-3">
         @RenderBody()
