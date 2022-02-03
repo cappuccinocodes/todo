@@ -30,6 +30,9 @@ function populateForm(i) {
         success: function (response) {
             alert('success pop' + response.name);
             $("#Todo_Name").val(response.name);
+            $("#Todo_Id").val(response.id);
+            $("#form-button").val("Update Todo");
+            $("#form-action").attr("action", "/Todo/Update");
         },
         error: function () {
             alert('fail');

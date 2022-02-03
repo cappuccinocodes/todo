@@ -134,6 +134,29 @@ namespace todo.Controllers
             return Redirect("https://localhost:7000/");
         }
 
+        public RedirectResult Update(Todo todo)
+        {
+            using (SqlConnection con =
+                   new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Initial Catalog=Todo"))
+            {
+                using (var tableCmd = con.CreateCommand())
+                {
+                    con.Open();
+                    tableCmd.CommandText = $"UPDATE todo SET name = '{todo.Name}' WHERE Id = '{todo.Id}'";
+                    try
+                    {
+                        tableCmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+            return Redirect("https://localhost:7000/");
+        }
+
 
     }
 }
