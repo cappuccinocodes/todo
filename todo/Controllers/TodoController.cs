@@ -13,6 +13,23 @@ namespace todo.Controllers
             return View(tdlvm);
         }
 
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            using (var connection =
+                   new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Initial Catalog=Todo"))
+            {
+                using (var tableCmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    tableCmd.CommandText = $"DELETE from todo WHERE Id = '{id}'";
+                    int rowCount = tableCmd.ExecuteNonQuery();
+                }
+            }
+
+            return new EmptyResult();
+        }
+
         internal TodoViewModel GetAllTodos()
         {
             List<Todo> todoList = new();

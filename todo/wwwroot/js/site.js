@@ -1,4 +1,18 @@
 ﻿function deleteTodo(i) 
 {
-    alert('this is the index' + i);
+
+    $.ajax({
+        url: 'Todo/Delete',
+        type: 'POST',
+        data: {
+            id: i
+        },
+        success: function(response) {
+            alert('success' + response);
+            window.location.reload();
+        },
+        error: function() {
+            alert('fail');
+        }
+    });
 }
