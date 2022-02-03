@@ -23,11 +23,49 @@ namespace todo.Controllers
                 {
                     connection.Open();
                     tableCmd.CommandText = $"DELETE from todo WHERE Id = '{id}'";
-                    int rowCount = tableCmd.ExecuteNonQuery();
+                    tableCmd.ExecuteNonQuery();
                 }
             }
 
             return new EmptyResult();
+        }
+
+        [HttpGet]
+        public JsonResult PopulateForm(int id)
+        {
+            var todo = GetById(id);
+            return Json(todo);
+        }
+
+        internal Todo GetById(int id)
+        {
+            Todo todo = new();
+
+            using (var connection =
+                   new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Initial Catalog=Todo"))
+            {
+                using (var tableCmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    tableCmd.CommandText = $"SELECT * FROM todo Where Id = '{id}'";
+
+                    using (var reader = tableCmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            todo.Id = reader.GetInt32(0);
+                            todo.Name = reader.GetString(1);
+                        }
+                        else
+                        {
+                            return todo;
+                        }
+                    };
+                }
+            }
+
+            return todo;
         }
 
         internal TodoViewModel GetAllTodos()
