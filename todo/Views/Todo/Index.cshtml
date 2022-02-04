@@ -1,13 +1,12 @@
 ﻿@model todo.ViewModels.TodoViewModel
 
 <div class="row justify-content-center">
-    <div class="col-4">
+    <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
         <table class="table">
             <thead>
             <tr class="table-primary">
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
-                <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -15,10 +14,13 @@
             @foreach (var t in Model.TodoList)
             {
                 <tr>
-                    <th scope="row">@t.Id</th>
-                    <td>@t.Name</td>
-                    <td><input type="submit" class="btn btn-danger" value="Delete" onClick="deleteTodo(@t.Id)"/></td>
-                    <td><input type="submit" class="btn btn-primary" value="Update" onClick="populateForm(@t.Id)"/></td>
+                    <th class="todos-column" scope="row">@t.Id</th>
+                    <td class="todos-column">@t.Name</td>
+                    <td class="buttons-column">
+                        <input type="submit" class="btn btn-danger" value="Delete" onClick="deleteTodo(@t.Id)"/>
+                        <input type="submit" class="btn btn-primary" value="Update" onClick="populateForm(@t.Id)"/>
+                    </td>
+                    
                 </tr>
             }
             </tbody>
