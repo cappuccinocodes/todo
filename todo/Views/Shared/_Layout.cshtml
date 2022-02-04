@@ -9,11 +9,15 @@
 </head>
 <body>
 
-<div class="container justify-content-center">
-    @Html.Partial("_Form")
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
+<div class="background">
+    <div class="container">
+        <div class="row justify-content-center">
+            @Html.Partial("_Form")
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
 </div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
