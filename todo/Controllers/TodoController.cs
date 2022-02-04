@@ -7,17 +7,24 @@ namespace todo.Controllers
 {
     public class TodoController: Controller
     {
+        private readonly IConfiguration _configuration;
+
+        public TodoController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public IActionResult Index()
         {
-            var tdlvm = GetAllTodos();
-            return View(tdlvm);
+            var todoListViewModel = GetAllTodos();
+            return View(todoListViewModel);
         }
 
         [HttpPost]
         public ActionResult Delete(int id)
         {
             using (var connection =
-                   new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Initial Catalog=Todo"))
+                   new SqlConnection(_configuration.GetConnectionString("ConnectionString")))
             {
                 using (var tableCmd = connection.CreateCommand())
                 {

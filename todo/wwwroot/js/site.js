@@ -10,9 +10,6 @@
         success: function(response) {
             alert('success' + response);
             window.location.reload();
-        },
-        error: function() {
-            alert('fail');
         }
     });
 }
@@ -33,9 +30,6 @@ function populateForm(i) {
             $("#Todo_Id").val(response.id);
             $("#form-button").val("Update Todo");
             $("#form-action").attr("action", "/Todo/Update");
-        },
-        error: function () {
-            alert('fail');
         }
     });
 }
